@@ -2,7 +2,9 @@ export const typeDefs = `#graphql
   type Query {
     getGenres(token: String!): Genres
     getCurrentUser(token: String!): CurrentUser
-    getTopArtists(token: String!): TopArtists
+    # itemType = "artist" or "tracks"
+    # timeRange = "short_term", "medium_term", "long_term"
+    getTopItems(token: String!, itemType: String!, timeRange: String!): TopItems
   }
 
   type Genres {
@@ -73,13 +75,15 @@ export const typeDefs = `#graphql
     uri: String
   }
 
-  type TopArtists {
+  union TopItem = Artist | Track
+
+  type TopItems {
     href: String
     limit: Int
     next: String
     offset: Int
     previous: String
     total: Int
-    items: [Artist]
+    items: [TopItem]
   }
 `;
