@@ -5,7 +5,6 @@ export const typeDefs = `#graphql
     getTopArtists(token: String!): TopArtists
   }
 
-  # get a list of all available spotify genres
   type Genres {
     genres: [String]
   }
@@ -74,8 +73,6 @@ export const typeDefs = `#graphql
     uri: String
   }
 
-  # union TopItem = Artist | Track
-
   type TopArtists {
     href: String
     limit: Int
@@ -85,36 +82,4 @@ export const typeDefs = `#graphql
     total: Int
     items: [Artist]
   }
-
-  # get the current user's top artists or tracks
-  # QUERY VARIABLES:
-    # limit: integer
-      # max number of items to return
-      # default: 20, min: 1, max: 50
-    # offset: integer
-      # index of the first item to return
-      # default: 0
-    # time range: string
-      # over what time frame data is calculated from
-      # default: medium_term
-      # VALID VALUES:
-        # long_term: from several years of data including new data
-        # medium_term: approximately last 6 months
-        # short_term: approximately last 4 weeks
-  # type TopItems {
-  #   # api endpoint, full result of request
-  #   href: String
-  #   # max number of items in response (set in query)
-  #   limit: Int
-  #   # api endpoint, next page of items
-  #   next: String
-  #   # offset of items returned (set in query)
-  #   offset: Int
-  #   # api endpoint, previous page of items (null if none)
-  #   previous: String
-  #   # total number of items available to return
-  #   total: Int
-  #   # this list can include Artist and Track types
-  #   items: [TopItem]
-  # }
 `;
