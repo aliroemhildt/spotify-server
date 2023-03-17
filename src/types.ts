@@ -21,14 +21,20 @@ interface Artist {
   uri: String
 }
 
-export interface TopArtists {
+interface Track {
+  artists: [Artist]
+  id: String
+  name: String
+}
+
+export interface TopItems {
   href: String
   limit: Number
   next: String
   offset: Number
   previous: String
   total: Number
-  items: [Artist]
+  items: (Artist | Track)[]
 }
 
 export interface CurrentUser {
