@@ -6,8 +6,18 @@ export const resolvers = {
     getCurrentUser: async (_, { token }, { dataSources }) => {
       return dataSources.spotifyAPI.getCurrentUser(token);
     },
-    getTopArtists: async (_, { token }, { dataSources }) => {
-      return dataSources.spotifyAPI.getTopArtists(token);
+    getTopItems: async (_, { token, itemType, timeRange }, { dataSources }) => {
+      return dataSources.spotifyAPI.getTopItems(token, itemType, timeRange);
+    }
+  },
+  TopItem: {
+    __resolveType(item, contextValue, info) {
+      if (item.type == 'track') {
+        return 'Track'
+      }
+      if (item.type == 'artist') {
+        return 'Artist'
+      }
     }
   }
 }
