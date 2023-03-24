@@ -1,5 +1,5 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
-import { Genres, CurrentUser, TopItems } from './types.js';
+import { Genres, CurrentUser, TopItems } from './__generated__/types';
 
 export class SpotifyAPI extends RESTDataSource {
   override baseURL = 'https://api.spotify.com/v1/';

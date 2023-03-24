@@ -1,14 +1,16 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { SpotifyAPI } from './spotify-api.js';
-import { typeDefs } from './schema.js';
 import { resolvers } from './resolvers.js';
+import { readFileSync } from 'fs';
 
-interface ContextValue {
+export interface ContextValue {
   dataSources: {
     spotifyAPI: SpotifyAPI;
   };
 }
+
+const typeDefs = readFileSync('src/schema.graphql', { encoding: 'utf-8' });
 
 const server = new ApolloServer<ContextValue>({
   typeDefs,
