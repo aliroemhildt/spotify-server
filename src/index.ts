@@ -4,7 +4,7 @@ import { SpotifyAPI } from './spotify-api.js';
 import { resolvers } from './resolvers.js';
 import { readFileSync } from 'fs';
 
-interface ContextValue {
+export interface ContextValue {
   dataSources: {
     spotifyAPI: SpotifyAPI;
   };
